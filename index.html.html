@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tamadur Salem | Portfolio CV</title>
+  <meta name="description" content="Portfolio CV website for Tamadur Salem, Information Security graduate." />
+
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --teal: #0f766e;
+      --teal-dark: #064e47;
+      --teal-soft: #ccfbf1;
+      --mint: #ecfdf5;
+      --blue-soft: #dbeafe;
+      --purple-soft: #ede9fe;
+      --shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --container: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 78% 8%, rgba(204, 251, 241, 0.95), transparent 25%),
+        radial-gradient(circle at 8% 22%, rgba(237, 233, 254, 0.85), transparent 18%),
+        var(--bg);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 40px));
+      margin: auto;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 18px;
+      z-index: 10;
+      margin-top: 22px;
+    }
+
+    .nav-inner {
+      height: 74px;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: var(--teal-soft);
+      color: var(--teal-dark);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--teal);
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: var(--teal);
+      color: white;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(15, 118, 110, 0.22);
+    }
+
+    .btn.secondary {
+      background: white;
+      color: var(--text);
+      border-color: var(--line);
+    }
+
+    .btn.secondary:hover {
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.85fr;
+      gap: 72px;
+      align-items: center;
+      padding: 118px 0 96px;
+    }
+
+    .eyebrow {
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      max-width: 760px;
+      font-size: clamp(44px, 6vw, 72px);
+      line-height: 0.98;
+      letter-spacing: -0.07em;
+      margin-bottom: 28px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 20px;
+      line-height: 1.65;
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .profile-card,
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+
+    .profile-card {
+      padding: 38px;
+    }
+
+    .profile-top {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+
+    .avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: var(--teal-soft);
+      display: grid;
+      place-items: center;
+      color: var(--teal-dark);
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+    }
+
+    .profile-card h2 {
+      font-size: 28px;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+
+    .profile-card .role {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin: 26px 0 22px;
+    }
+
+    .metric {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px;
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--teal);
+      font-size: 34px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .metric span,
+    .profile-foot {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    section {
+      padding: 74px 0;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 70px;
+      align-items: start;
+    }
+
+    .section-title h2 {
+      margin: 18px 0 18px;
+      max-width: 620px;
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.08;
+      letter-spacing: -0.055em;
+    }
+
+    .section-title p {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .about-card {
+      padding: 38px;
+    }
+
+    .about-card p:first-child {
+      font-size: 20px;
+      color: var(--text);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    .about-card p:last-child {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      margin-top: 38px;
+    }
+
+    .skill-card {
+      min-height: 240px;
+      padding: 28px;
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      margin-bottom: 24px;
+    }
+
+    .skill-card h3,
+    .project-card h3 {
+      font-size: 22px;
+      line-height: 1.2;
+      letter-spacing: -0.035em;
+      margin-bottom: 14px;
+    }
+
+    .skill-card ul {
+      list-style: none;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 38px;
+    }
+
+    .project-card {
+      padding: 24px;
+      min-height: 370px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-visual {
+      height: 116px;
+      border-radius: 22px;
+      padding: 28px 22px;
+      color: var(--teal-dark);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.65;
+      margin-bottom: 22px;
+    }
+
+    .project-card .tag {
+      margin-top: auto;
+      width: fit-content;
+      background: var(--bg);
+      max-width: 100%;
+      white-space: normal;
+    }
+
+    .experience-card {
+      padding: 38px;
+      position: relative;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .dot {
+      width: 16px;
+      height: 16px;
+      background: var(--teal);
+      border-radius: 50%;
+      margin-top: 8px;
+      box-shadow: 0 0 0 8px var(--teal-soft);
+    }
+
+    .experience-card h3 {
+      font-size: 24px;
+      line-height: 1.25;
+      margin-bottom: 14px;
+      letter-spacing: -0.035em;
+    }
+
+    .experience-card p {
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .footer-cta {
+      margin: 70px auto 42px;
+      width: min(var(--container), calc(100% - 40px));
+      background: var(--teal-dark);
+      color: white;
+      border-radius: 34px;
+      padding: 34px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .footer-cta h2 {
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+
+    .footer-cta p {
+      color: var(--teal-soft);
+      font-size: 15px;
+    }
+
+    .footer-cta .btn {
+      background: white;
+      color: var(--text);
+      flex: 0 0 auto;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 13px;
+      width: min(var(--container), calc(100% - 40px));
+      margin: 0 auto 40px;
+    }
+
+    @media (max-width: 980px) {
+      .nav-inner {
+        height: auto;
+        padding: 18px 20px;
+        border-radius: 28px;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .brand {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero,
+      .section-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .hero {
+        padding-top: 80px;
+      }
+
+      .skills-grid,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(100% - 28px, 390px);
+      }
+
+      .navbar {
+        top: 10px;
+        margin-top: 12px;
+      }
+
+      .nav-inner {
+        flex-direction: row;
+        align-items: center;
+        border-radius: 22px;
+      }
+
+      .brand .tag {
+        display: none;
+      }
+
+      .nav-inner > .btn {
+        min-height: 42px;
+        padding: 0 18px;
+      }
+
+      h1 {
+        font-size: 43px;
+        line-height: 1;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .profile-card,
+      .about-card,
+      .experience-card,
+      .skill-card,
+      .project-card {
+        border-radius: 20px;
+      }
+
+      .profile-card {
+        padding: 26px;
+      }
+
+      .profile-top {
+        align-items: flex-start;
+      }
+
+      .avatar {
+        width: 84px;
+        height: 84px;
+        font-size: 26px;
+      }
+
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 58px 0;
+      }
+
+      .section-title h2 {
+        font-size: 30px;
+      }
+
+      .footer-cta {
+        width: min(100% - 28px, 390px);
+        padding: 28px;
+        border-radius: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <div class="brand">
+        <span>Tamadur Salem</span>
+        <span class="tag">Information Security</span>
+      </div>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="btn secondary" href="#" onclick="alert('Replace this link with your real CV PDF file.'); return false;">Download CV</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div>
+        <div class="eyebrow">Portfolio / CV Website</div>
+        <h1>Information Security Graduate building secure, useful digital products.</h1>
+        <p>
+          A clean personal website to present my academic projects, cybersecurity foundation,
+          technical skills, training experience, and contact details in one professional place.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="btn secondary" href="#contact">Contact Me</a>
+        </div>
+      </div>
+
+      <aside class="profile-card" aria-label="Profile summary">
+        <div class="profile-top">
+          <div class="avatar">TS</div>
+          <div>
+            <h2>Tamadur Salem</h2>
+            <div class="role">Information Security Graduate</div>
+          </div>
+        </div>
+
+        <span class="tag">Open to IT / Cybersecurity Roles</span>
+
+        <div class="metrics">
+          <div class="metric">
+            <strong>03+</strong>
+            <span>Academic<br />Projects</span>
+          </div>
+          <div class="metric">
+            <strong>4 mo</strong>
+            <span>Individual<br />Project</span>
+          </div>
+        </div>
+
+        <p class="profile-foot">
+          Focus: secure systems, documentation, databases, web development,
+          and practical problem solving.
+        </p>
+      </aside>
+    </section>
+
+    <section id="about" class="container section-grid">
+      <div class="section-title">
+        <span class="tag">About</span>
+        <h2>Clear profile, no clutter.</h2>
+        <p>
+          A short professional introduction written for recruiters and hiring teams.
+          It explains who I am, what I can contribute, and what kind of roles I am looking for.
+        </p>
+      </div>
+
+      <div class="card about-card">
+        <p>
+          Information Security graduate with a strong academic foundation in cybersecurity,
+          secure systems, and information protection. Skilled in documentation, project
+          coordination, analytical thinking, and building practical web-based solutions.
+        </p>
+        <p>
+          Target roles: IT Support • Cybersecurity Trainee • SOC Trainee • Technical Documentation • Junior Web Projects
+        </p>
+      </div>
+    </section>
+
+    <section id="skills" class="container">
+      <div class="section-title">
+        <span class="tag">Skills</span>
+        <h2>Balanced technical skill set.</h2>
+        <p>
+          Grouped skills make the page easy to scan and stronger than listing everything randomly.
+        </p>
+      </div>
+
+      <div class="skills-grid">
+        <article class="card skill-card">
+          <div class="icon" style="background: var(--teal-soft);"></div>
+          <h3>Cybersecurity</h3>
+          <ul>
+            <li>Security basics</li>
+            <li>Vulnerability awareness</li>
+            <li>Authentication concepts</li>
+            <li>Secure system thinking</li>
+          </ul>
+        </article>
+
+        <article class="card skill-card">
+          <div class="icon" style="background: var(--blue-soft);"></div>
+          <h3>Web Development</h3>
+          <ul>
+            <li>HTML / CSS / JavaScript</li>
+            <li>PHP / Node.js basics</li>
+            <li>Frontend structure</li>
+            <li>Responsive pages</li>
+          </ul>
+        </article>
+
+        <article class="card skill-card">
+          <div class="icon" style="background: var(--purple-soft);"></div>
+          <h3>Database & Backend</h3>
+          <ul>
+            <li>MySQL / PostgreSQL</li>
+            <li>CRUD operations</li>
+            <li>API concepts</li>
+            <li>Data organization</li>
+          </ul>
+        </article>
+
+        <article class="card skill-card">
+          <div class="icon" style="background: var(--mint);"></div>
+          <h3>Professional Skills</h3>
+          <ul>
+            <li>Documentation</li>
+            <li>Data entry</li>
+            <li>Reports</li>
+            <li>Team collaboration</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects" class="container">
+      <div class="section-title">
+        <span class="tag">Projects</span>
+        <h2>Selected work that proves ability.</h2>
+        <p>
+          Each project card explains the purpose, tools, and real value without making the site heavy.
+        </p>
+      </div>
+
+      <div class="project-grid">
+        <article class="card project-card">
+          <div class="project-visual" style="background: var(--teal-soft);">Secure Payment</div>
+          <h3>Secure Payment Gateway Integration</h3>
+          <p>
+            Graduation project prototype integrating PayPal Sandbox with layered security controls
+            such as JWT authentication, bcrypt password hashing, HTTPS/TLS, rate limiting,
+            and database-backed transactions.
+          </p>
+          <span class="tag">Node.js • Express • PostgreSQL • PayPal • JWT</span>
+        </article>
+
+        <article class="card project-card">
+          <div class="project-visual" style="background: var(--blue-soft);">Education Platform</div>
+          <h3>Tifl Educational Platform</h3>
+          <p>
+            Interactive Arabic educational website for children with games, parent login,
+            child profiles, activity monitoring, and a simple MySQL/PHP backend.
+          </p>
+          <span class="tag">HTML • CSS • JavaScript • PHP • MySQL</span>
+        </article>
+
+        <article class="card project-card">
+          <div class="project-visual" style="background: var(--purple-soft);">Cybersecurity Study</div>
+          <h3>Cryptography Learning Labs</h3>
+          <p>
+            Academic practice and explanations for RSA, S-DES, hashing, digital signatures,
+            and key management concepts with step-by-step learning material.
+          </p>
+          <span class="tag">RSA • S-DES • Hashing • PKI</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="container section-grid">
+      <div class="section-title">
+        <span class="tag">Experience</span>
+        <h2>Training and practical tasks.</h2>
+        <p>
+          A simple section for cooperative training and office/technical responsibilities.
+        </p>
+      </div>
+
+      <article class="card experience-card">
+        <div class="timeline">
+          <div class="dot"></div>
+          <div>
+            <h3>Cooperative Training — Social Development</h3>
+            <p>
+              Supported administrative and technical workflows, attended meetings,
+              followed up files, prepared documentation, and entered beneficiary data accurately.
+            </p>
+            <a class="btn" href="mailto:a@gmail.com">Email Me</a>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer id="contact" class="footer-cta">
+    <div>
+      <h2>Ready for a clean portfolio website and job applications.</h2>
+      <p>Email: <a href="mailto:a@gmail.com">a@gmail.com</a> • LinkedIn: To be added • GitHub: To be added</p>
+    </div>
+
+    <a class="btn" href="mailto:a@gmail.com">Let’s Connect</a>
+  </footer>
+
+  <p class="note">
+    Replace placeholders with final email, LinkedIn, GitHub, real project links, and your real CV PDF.
+  </p>
+</body>
+</html>
