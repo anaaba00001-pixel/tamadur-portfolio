@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eng. TMADER | Portfolio</title>
-  <meta name="description" content="Personal website and professional resume of Eng. TMADER, an Information Security graduate." />
+  <title>Tamadur Salem | Information Security Portfolio</title>
+  <meta name="description" content="The professional portfolio of Tamadur Salem, an Information Security graduate based in Riyadh, Saudi Arabia." />
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -247,6 +247,26 @@
       letter-spacing: -0.01em;
     }
 
+    .verified-name {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .verified-badge {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #0a66c2;
+      color: white;
+      font-size: 14px;
+      font-weight: 900;
+      line-height: 1;
+      box-shadow: 0 0 0 4px var(--blue-soft);
+    }
+
     .profile-card .role {
       color: var(--muted);
       font-weight: 700;
@@ -358,17 +378,16 @@
       letter-spacing: -0.01em;
     }
 
-    .skill-card ul {
-      list-style: none;
+    .skill-card p {
       color: var(--muted);
       font-size: 15px;
-      line-height: 1.8;
+      line-height: 1.75;
       font-weight: 500;
     }
 
     .project-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 24px;
       margin-top: 38px;
     }
@@ -619,7 +638,7 @@
   <header class="navbar">
     <div class="container nav-inner">
       <div class="brand">
-        <span>Eng. TMADER</span>
+        <span>TAMADUR SALEM</span>
         <span class="tag">Information Security</span>
       </div>
 
@@ -653,8 +672,11 @@
         <div class="profile-top">
           <div class="avatar">T</div>
           <div>
-            <h2>Eng. TMADER</h2>
-            <div class="role">Information Security Specialist (2026)</div>
+            <h2 class="verified-name">
+              Tamadur Salem
+              <a class="verified-badge" href="https://www.linkedin.com/in/tmader-salem-587ab0420" target="_blank" rel="noopener noreferrer" aria-label="View verified LinkedIn profile" title="LinkedIn profile">✓</a>
+            </h2>
+            <div class="role">Information Security Graduate • Riyadh, Saudi Arabia</div>
           </div>
         </div>
 
@@ -662,17 +684,17 @@
 
         <div class="metrics">
           <div class="metric">
-            <strong>03+</strong>
-            <span>Academic<br />Projects</span>
+            <strong>02</strong>
+            <span>Featured<br />Projects</span>
           </div>
           <div class="metric">
-            <strong>4 Mos</strong>
-            <span>Training &<br />Solo Projects</span>
+            <strong>28 Wks</strong>
+            <span>Cooperative<br />Training</span>
           </div>
         </div>
 
         <p class="profile-foot">
-          Core Focus: Systems security, technical documentation, database management, web development, and effective problem-solving.
+          Core Focus: secure systems, technical documentation, data protection, project coordination, and practical problem-solving.
         </p>
       </aside>
     </section>
@@ -688,10 +710,10 @@
 
       <div class="card about-card">
         <p>
-          I am an Information Security graduate with a robust academic foundation in cybersecurity, information protection, and secure systems development. I possess strong skills in technical documentation writing, rigorous analytical thinking, and project coordination, alongside the capability to build highly practical and effective web solutions.
+          I am an Information Security graduate with a strong foundation in cybersecurity, information protection, and secure systems. I turn technical requirements into practical solutions through careful analysis, clear documentation, and thoughtful project coordination.
         </p>
         <p>
-          Target Roles: IT Support • Cybersecurity Trainee • SOC Trainee • Technical Documentation Writer • Junior Web Developer.
+          Target Roles: Information Security • Cybersecurity • IT Support • Secure Software Development • Technical Documentation.
         </p>
       </div>
     </section>
@@ -699,55 +721,35 @@
     <section id="skills" class="container">
       <div class="section-title">
         <span class="tag">My Skills</span>
-        <h2>A balanced set of technical and practical competencies.</h2>
+        <h2>Security-minded skills built through real project work.</h2>
         <p>
-          I have categorized my skills into clear sections to make them easily readable and highlight my strengths directly.
+          My strengths combine security thinking, structured analysis, accurate documentation, and dependable project execution.
         </p>
       </div>
 
       <div class="skills-grid">
         <article class="card skill-card">
           <div class="icon" style="background: var(--teal-soft);"></div>
-          <h3>Cybersecurity</h3>
-          <ul>
-            <li>Digital Protection Fundamentals</li>
-            <li>Vulnerability Discovery & Assessment</li>
-            <li>Authentication Concepts</li>
-            <li>Security-First System Design</li>
-          </ul>
+          <h3>Information Security</h3>
+          <p>I apply digital protection fundamentals, vulnerability discovery, authentication concepts, and security-first thinking when designing and reviewing systems.</p>
         </article>
 
         <article class="card skill-card">
           <div class="icon" style="background: var(--blue-soft);"></div>
-          <h3>Web Development</h3>
-          <ul>
-            <li>HTML / CSS / JavaScript</li>
-            <li>PHP / Node.js Basics</li>
-            <li>UI/UX Building & Development</li>
-            <li>Responsive Web Design</li>
-          </ul>
+          <h3>Secure Systems</h3>
+          <p>I understand secure API practices, access control, database integration, input validation, and the importance of building protection into everyday system workflows.</p>
         </article>
 
         <article class="card skill-card">
           <div class="icon" style="background: var(--purple-soft);"></div>
-          <h3>Databases & Servers</h3>
-          <ul>
-            <li>MySQL / PostgreSQL</li>
-            <li>Database Operations (CRUD)</li>
-            <li>Understanding API Basics</li>
-            <li>Data Organization & Structuring</li>
-          </ul>
+          <h3>Data & Documentation</h3>
+          <p>I organize, verify, and structure data accurately while producing clear technical documentation, process records, and periodic reports that teams can rely on.</p>
         </article>
 
         <article class="card skill-card">
           <div class="icon" style="background: var(--mint);"></div>
-          <h3>Professional Skills</h3>
-          <ul>
-            <li>Technical Documentation Writing</li>
-            <li>Data Entry & Processing</li>
-            <li>Periodic Report Generation</li>
-            <li>Effective Team Collaboration</li>
-          </ul>
+          <h3>Project Execution</h3>
+          <p>I bring analytical problem-solving, project coordination, team collaboration, adaptability, and consistent follow-through from planning through testing and delivery.</p>
         </article>
       </div>
     </section>
@@ -766,7 +768,7 @@
           <div class="project-visual" style="background: var(--teal-soft);">Secure Payment</div>
           <h3>Secure Payment Gateway Integration</h3>
           <p>
-            A graduation project prototype that integrates a PayPal Sandbox environment with multiple custom security layers, including JWT authentication, bcrypt password hashing, and HTTPS/TLS protocols to ensure transactional data integrity.
+            Security should not depend on every user remembering every protective step. This graduation project integrates protection directly into the payment flow through authentication, password hashing, encrypted communication, rate limiting, and webhook verification, allowing security to work in the background and fit into existing systems.
           </p>
           <span class="tag">Node.js • Express • PostgreSQL • PayPal • JWT</span>
         </a>
@@ -775,19 +777,11 @@
           <div class="project-visual" style="background: var(--blue-soft);">Educational Platform</div>
           <h3>"Tifl" Educational Platform</h3>
           <p>
-            An interactive Arabic website dedicated to children's education. It features interactive learning games, custom student profiles, and a secure parent login portal to monitor activities, built with a lightweight backend framework.
+            During my cooperative training with Social Development, I noticed that the children's library lacked a digital component to extend learning beyond its shelves. I independently turned that gap into Tifl: a large, integrated Arabic platform with 32 interactive games across four sections, secure sign-in, a parent dashboard, child profiles, and play-time tracking.
           </p>
           <span class="tag">HTML • CSS • JavaScript • PHP • MySQL</span>
         </a>
 
-        <article class="card project-card">
-          <div class="project-visual" style="background: var(--purple-soft);">Cryptography Apps</div>
-          <h3>Applied Cryptography Laboratories</h3>
-          <p>
-            Academic research and practical deployment of core cryptographic algorithms, including RSA and S-DES, digital signature validation, and secure key infrastructure management through step-by-step documentation.
-          </p>
-          <span class="tag">RSA • S-DES • Hashing • PKI</span>
-        </article>
       </div>
     </section>
 
@@ -806,7 +800,7 @@
           <div>
             <h3>Cooperative Training — Social Development Committee</h3>
             <p>
-              Actively contributed to supporting administrative and technical enterprise workflows. Responsibilities included participating in core organizational meetings, tracking departmental deliverables, preparing technical documentation, and executing precise data entry operations for beneficiaries.
+              Supported information security, administrative, and technical workflows by documenting processes, reviewing operational and security logs, preparing periodic reports, conducting initial vulnerability checks, and accurately entering and verifying beneficiary data.
             </p>
             <a class="btn" href="mailto:tmadersalem@gmail.com">Email Me</a>
           </div>
@@ -819,6 +813,7 @@
     <div>
       <h2>Ready for the next step? Let's work together.</h2>
       <p>
+        Riyadh, Saudi Arabia •
         Email: <a href="mailto:tmadersalem@gmail.com">tmadersalem@gmail.com</a> • 
         LinkedIn: <a href="https://www.linkedin.com/in/tmader-salem-587ab0420" target="_blank" rel="noopener noreferrer">Tmader Salem</a> • 
         GitHub: <a href="https://github.com/anaaba00001-pixel" target="_blank" rel="noopener noreferrer">anaaba00001-pixel</a>
@@ -828,8 +823,5 @@
     <a class="btn" href="mailto:tmadersalem@gmail.com">Let's Stay in Touch</a>
   </footer>
 
-  <p class="note">
-    * Note: Don't forget to link your PDF resume file to the "Download Resume" button in the header.
-  </p>
 </body>
 </html>
