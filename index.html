@@ -1,899 +1,632 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<!doctype html>
+<html lang="ar">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tamadur Salem | Information Security Portfolio</title>
-  <meta name="description" content="The professional portfolio of Tamadur Salem, an Information Security graduate based in Riyadh, Saudi Arabia." />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="معرض مشاريع تماضر سالم في أمن المعلومات وتطوير الويب">
+  <meta name="theme-color" content="#181918">
+  <title>TAMADUR’S FILES — معرض مشاريع تماضر سالم</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #f8fafc;
-      --card: #ffffff;
-      --text: #0f172a;
-      --muted: #64748b;
-      --line: #e2e8f0;
-      --teal: #0f766e;
-      --teal-dark: #064e47;
-      --teal-soft: #ccfbf1;
-      --mint: #ecfdf5;
-      --blue-soft: #dbeafe;
-      --purple-soft: #ede9fe;
-      --shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
-      --radius-lg: 28px;
-      --radius-md: 20px;
-      --container: 1180px;
+      color-scheme: dark;
+      --base: #181918;
+      --paper: #f1ecdf;
+      --ink: #252621;
+      --cream: #efe9da;
+      --muted: #b9b5a8;
+      --line: #343632;
+      --mono: "IBM Plex Mono", monospace;
+      --display: "Barlow Condensed", Impact, sans-serif;
+      --arabic: "Noto Sans Arabic", Tahoma, Arial, sans-serif;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    * { box-sizing: border-box; }
+    html { scrollbar-color: #68695e var(--base); scroll-behavior: smooth; }
+    body { margin: 0; background: var(--base); color: var(--cream); font-family: var(--arabic); }
+    h1[tabindex="-1"]:focus { outline: none; }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 5;
+      opacity: .12;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='.26' filter='url(%23n)'/%3E%3C/svg%3E");
     }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; }
+    button { font: inherit; }
+    a:focus-visible, button:focus-visible { outline: 2px solid #e9cd85; outline-offset: 4px; }
+    [hidden] { display: none !important; }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Inter', Arial, sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 78% 8%, rgba(204, 251, 241, 0.95), transparent 25%),
-        radial-gradient(circle at 8% 22%, rgba(237, 233, 254, 0.85), transparent 18%),
-        var(--bg);
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(var(--container), calc(100% - 40px));
-      margin: auto;
-    }
-
-    /* --- Simple & Elegant Animations --- */
-    @keyframes fadeSlideUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* Navbar Animation */
-    .navbar {
+    .masthead {
       position: sticky;
-      top: 18px;
+      top: 0;
       z-index: 10;
-      margin-top: 22px;
-      animation: fadeIn 1s ease-out;
-    }
-
-    .nav-inner {
-      height: 74px;
-      background: rgba(255, 255, 255, 0.86);
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(16px);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 28px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      font-weight: 800;
-    }
-
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      min-height: 30px;
-      padding: 7px 14px;
-      border-radius: 999px;
-      background: var(--teal-soft);
-      color: var(--teal-dark);
-      font-size: 13px;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      color: var(--muted);
-      font-size: 15px;
-      font-weight: 700;
-    }
-
-    .nav-links a:hover {
-      color: var(--teal);
-    }
-
-    .btn {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 48px;
-      padding: 0 22px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      background: var(--teal);
-      color: white;
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(15, 118, 110, 0.22);
-    }
-
-    .btn.secondary {
-      background: white;
-      color: var(--text);
-      border-color: var(--line);
-    }
-
-    .btn.secondary:hover {
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
-    }
-
-    .hero {
+      height: 55px;
       display: grid;
-      grid-template-columns: 1.35fr 0.85fr;
-      gap: 72px;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      padding: 118px 0 96px;
+      padding: 0 4.5vw;
+      background: #181918f5;
+      border-bottom: 1px solid var(--line);
     }
+    .home-link { text-decoration: none; font: 800 1.2rem/1 var(--display); letter-spacing: .065em; }
+    .mast-side { font: 500 .65rem/1.1 var(--mono); letter-spacing: .08em; color: var(--muted); }
+    .nav-about { justify-self: end; text-decoration: none; font-size: .78rem; }
+    .nav-about:hover, .home-link:hover { color: #e4c786; }
 
-    /* Applying staggered animations to sections */
-    .hero > div { opacity: 0; animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards; }
-    .hero > aside { opacity: 0; animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards; }
-    #about { opacity: 0; animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards; }
-    #skills { opacity: 0; animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards; }
-    #projects { opacity: 0; animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards; }
-    .experience-container { opacity: 0; animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards; }
-    .footer-cta { opacity: 0; animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards; }
-
-    .eyebrow {
-      color: var(--teal);
-      font-size: 14px;
-      font-weight: 900;
-      margin-bottom: 18px;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      max-width: 760px;
-      font-size: clamp(38px, 5.5vw, 64px);
-      line-height: 1.2;
-      margin-bottom: 28px;
-      letter-spacing: -0.02em;
-    }
-
-    .hero p {
-      max-width: 650px;
+    .hero { padding: clamp(55px, 10vh, 102px) 5vw clamp(53px, 9vh, 90px); text-align: center; }
+    .kicker { margin: 0 0 16px; color: #d6be88; font: 500 .68rem/1.4 var(--mono); letter-spacing: .23em; }
+    .hero h1 { margin: 0; font: 800 clamp(2.5rem, 9.2vw, 8.8rem)/.86 var(--display); letter-spacing: -.023em; }
+    .hero p:last-child {
+      margin: 27px auto 0;
       color: var(--muted);
-      font-size: 19px;
-      line-height: 1.7;
-      margin-bottom: 34px;
+      font-size: clamp(.85rem, 1.4vw, 1.03rem);
+      max-width: 460px;
+      line-height: 1.9;
     }
 
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .profile-card,
-    .card {
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .profile-card {
-      padding: 38px;
-    }
-
-    .profile-top {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-      margin-bottom: 28px;
-    }
-
-    .avatar {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      background: var(--teal-soft);
-      display: grid;
-      place-items: center;
-      color: var(--teal-dark);
-      font-size: 34px;
-      font-weight: 900;
-    }
-
-    .profile-card h2 {
-      font-size: 26px;
-      line-height: 1.3;
-      margin-bottom: 8px;
-      letter-spacing: -0.01em;
-    }
-
-    .verified-name {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .verified-badge {
-      display: inline-grid;
-      place-items: center;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: #0a66c2;
-      color: white;
-      font-size: 14px;
-      font-weight: 900;
-      line-height: 1;
-      box-shadow: 0 0 0 4px var(--blue-soft);
-    }
-
-    .profile-card .role {
-      color: var(--muted);
-      font-weight: 700;
-      font-size: 15px;
-    }
-
-    .metrics {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin: 26px 0 22px;
-    }
-
-    .metric {
-      background: var(--bg);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 22px;
-    }
-
-    .metric strong {
+    .folders { width: min(90%, 1150px); margin: 0 auto 64px; display: grid; }
+    .folder {
+      color: var(--on);
+      text-decoration: none;
       display: block;
-      color: var(--teal);
-      font-size: 34px;
-      line-height: 1;
-      margin-bottom: 10px;
-    }
-
-    .metric span,
-    .profile-foot {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.6;
-      font-weight: 500;
-    }
-
-    section {
-      padding: 74px 0;
-    }
-
-    .section-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 70px;
-      align-items: start;
-    }
-
-    .section-title h2 {
-      margin: 18px 0 18px;
-      max-width: 620px;
-      font-size: clamp(28px, 4vw, 42px);
-      line-height: 1.3;
-      letter-spacing: -0.02em;
-    }
-
-    .section-title p {
-      max-width: 760px;
-      color: var(--muted);
-      font-size: 17px;
-      line-height: 1.7;
-    }
-
-    .about-card {
-      padding: 38px;
-    }
-
-    .about-card p:first-child {
-      font-size: 19px;
-      color: var(--text);
-      line-height: 1.7;
-      margin-bottom: 24px;
-    }
-
-    .about-card p:last-child {
-      color: var(--muted);
-      font-weight: 700;
-      font-size: 15px;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 22px;
-      margin-top: 38px;
-    }
-
-    .skill-card {
-      min-height: 240px;
-      padding: 28px;
-    }
-
-    .skill-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
-    }
-
-    .icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 16px;
-      margin-bottom: 24px;
-    }
-
-    .skill-card h3,
-    .project-card h3 {
-      font-size: 20px;
-      line-height: 1.4;
-      margin-bottom: 14px;
-      letter-spacing: -0.01em;
-    }
-
-    .skill-card p {
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.75;
-      font-weight: 500;
-    }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 24px;
-      margin-top: 38px;
-    }
-
-    .project-card {
-      padding: 24px;
-      min-height: 370px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .project-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 25px 50px rgba(15, 118, 110, 0.15);
-      cursor: pointer;
-    }
-
-    a.project-card:focus-visible {
-      outline: 3px solid var(--teal);
-      outline-offset: 5px;
-    }
-
-    .project-visual {
-      height: 116px;
-      border-radius: 22px;
-      padding: 28px 22px;
-      color: var(--teal-dark);
-      font-size: 14px;
-      font-weight: 900;
-      margin-bottom: 24px;
-    }
-
-    .project-card p {
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.7;
-      margin-bottom: 22px;
-      font-weight: 500;
-    }
-
-    .project-card .tag {
-      margin-top: auto;
-      width: fit-content;
-      background: var(--bg);
-      max-width: 100%;
-      white-space: normal;
-      line-height: 1.4;
-    }
-
-    .experience-card {
-      padding: 38px;
       position: relative;
+      padding-top: 22px;
+      filter: drop-shadow(0 -5px 12px #0002);
+      transition: transform .22s ease, filter .22s ease;
     }
-
-    .timeline {
+    .folder + .folder { margin-top: -6px; }
+    .folder:hover, .folder:focus-visible {
+      z-index: 2;
+      transform: translateY(-5px);
+      filter: brightness(1.11) drop-shadow(0 8px 14px #0004);
+    }
+    .tab {
+      position: absolute;
+      top: 0;
+      left: var(--shift, 0%);
+      padding: 6px 25px 5px 15px;
+      border-radius: 13px 22px 0 0;
+      background: var(--tone);
+      font: 500 .69rem/1.1 var(--mono);
+      white-space: nowrap;
+      min-height: 24px;
+    }
+    .folder-body {
+      position: relative;
+      background: var(--tone);
+      min-height: 56px;
+      border-radius: 3px 6px 0 0;
       display: grid;
-      grid-template-columns: 18px 1fr;
-      gap: 20px;
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      align-items: center;
+      gap: 18px;
+      padding: 10px 19px;
+      border-top: 1px solid #ffffff3d;
+    }
+    .folder-name { font: 800 clamp(1.18rem, 2.7vw, 2.05rem)/1 var(--display); letter-spacing: .025em; text-transform: uppercase; }
+    .folder-type { font-size: .78rem; opacity: .94; }
+    .arrow { font: 500 1.06rem/1 var(--mono); }
+    .folder:last-child .folder-body { min-height: 96px; padding-bottom: 13px; align-items: start; }
+    .folder-note { grid-column: 1 / -1; justify-self: start; font-size: .76rem; line-height: 1.65; }
+
+    .site-footer {
+      width: min(90%, 1150px);
+      margin: 0 auto;
+      padding: 20px 0 28px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font: 400 .69rem/1.4 var(--mono);
+      color: var(--muted);
+    }
+    .site-footer a { text-decoration: none; }
+    .site-footer a:hover { text-decoration: underline; }
+
+    .dossier {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: clamp(25px, 5vw, 68px) 5vw 65px;
+      animation: arrive .33s both;
+    }
+    @keyframes arrive {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .dossier-top { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 19px; }
+    .dossier-top h1 {
+      font: 800 clamp(2.6rem, 8vw, 7.5rem)/.85 var(--display);
+      letter-spacing: -.018em;
+      text-transform: uppercase;
+      margin: 0;
+      overflow-wrap: anywhere;
+    }
+    .return { font-size: .77rem; text-decoration: none; white-space: nowrap; line-height: 1.8; }
+    .return:hover { text-decoration: underline; }
+
+    .binder { display: grid; grid-template-columns: minmax(0, 1fr) 180px; align-items: start; }
+    .cover { background: var(--tone); padding: 12px 12px 14px 21px; border-radius: 4px 0 0 4px; }
+    .paper {
+      color-scheme: light;
+      background: var(--paper);
+      color: var(--ink);
+      padding: clamp(23px, 4vw, 57px);
+      position: relative;
+      box-shadow: 0 5px 20px #0003;
+    }
+    .paper::before {
+      content: "";
+      position: absolute;
+      left: -13px;
+      top: 42px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #171914aa;
+      box-shadow: 0 118px #171914aa, 0 236px #171914aa;
+    }
+    .paper-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1fr);
+      gap: clamp(22px, 4vw, 59px);
       align-items: start;
     }
+    .paper-grid.no-image { grid-template-columns: minmax(0, 1fr); }
+    .paper h2 { font-size: clamp(1.2rem, 2.25vw, 1.9rem); line-height: 1.5; margin: 0 0 12px; font-weight: 800; }
+    .paper p, .paper li { font-size: .9rem; line-height: 1.9; }
+    .paper p { margin: 0 0 14px; }
+    .paper h3 { font-size: 1rem; margin: 16px 0 5px; }
+    .paper ul { margin: 0; padding-inline-start: 21px; }
+    .english-summary { margin-top: 26px; padding-top: 20px; border-top: 1px solid #3b372c4a; }
 
-    .dot {
-      width: 16px;
-      height: 16px;
-      background: var(--teal);
-      border-radius: 50%;
-      margin-top: 8px;
-      box-shadow: 0 0 0 8px var(--teal-soft);
+    .plate {
+      display: block;
+      position: relative;
+      background: #e6decc;
+      border: 0;
+      padding: 7px 7px 19px;
+      box-shadow: 0 4px 12px #2c261e39;
+      transform: rotate(-3deg);
+      width: 100%;
+      cursor: zoom-in;
+      transition: transform .2s ease;
     }
-
-    .experience-card h3 {
-      font-size: 22px;
-      line-height: 1.4;
-      margin-bottom: 14px;
-    }
-
-    .experience-card p {
-      color: var(--muted);
-      margin-bottom: 22px;
-      font-size: 16px;
-    }
-
-    .footer-cta {
-      margin: 70px auto 42px;
-      width: min(var(--container), calc(100% - 40px));
-      background: var(--teal-dark);
-      color: white;
-      border-radius: 34px;
-      padding: 34px 40px;
-      display: flex;
+    .plate:hover { transform: rotate(0) scale(1.025); z-index: 1; }
+    .plate img { display: block; width: 100%; aspect-ratio: 1.45; object-fit: cover; background: #beb9ac; }
+    .plate span { position: absolute; right: 12px; bottom: 0; font: 500 1rem/1.2 var(--mono); color: #252621; }
+    .tech-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 21px; }
+    .tech-list span { border: 1px solid #777062; padding: 5px 7px; font: 500 .65rem/1.1 var(--mono); }
+    .paper-bottom { margin-top: 31px; border-top: 1px solid #3b372c4a; padding-top: 21px; display: flex; flex-wrap: wrap; gap: 9px; }
+    .external {
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 30px;
+      gap: 6px;
+      padding: 4px 11px;
+      text-decoration: none;
+      color: #f3ede1;
+      background: #272924;
+      font-size: .75rem;
     }
+    .external:hover { background: #44483e; }
 
-    .footer-cta h2 {
-      font-size: 26px;
-      line-height: 1.4;
-      margin-bottom: 8px;
-      letter-spacing: -0.01em;
+    .rail { padding-top: 18px; display: grid; gap: 6px; position: sticky; top: 70px; }
+    .rail a { text-decoration: none; }
+    .side-tab {
+      background: var(--tone);
+      color: var(--on);
+      font: 500 .69rem/1.15 var(--mono);
+      padding: 11px 8px 10px 10px;
+      border-radius: 0 10px 10px 0;
+      max-width: 150px;
+      transition: max-width .2s;
     }
+    .side-tab:hover, .side-tab[aria-current="page"] { max-width: 174px; }
+    .side-tab[aria-current="page"] { font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+    .next { justify-self: end; margin: 19px 0 0 10px; border-radius: 2rem; padding: 4px 11px; background: #d9bc7d; color: #242417; font-size: .73rem; }
 
-    .footer-cta p {
-      color: var(--teal-soft);
-      font-size: 16px;
-      line-height: 1.8;
+    .about-sheet { max-width: 900px; margin: 48px auto 65px; }
+    .about-sheet .paper { margin-inline: 5vw; }
+    .about-sheet .paper::before { display: none; }
+    .about-sheet h1 { font-size: clamp(1.8rem, 6vw, 3.1rem); margin: 0 0 12px; }
+    .about-links { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px; }
+
+    dialog { width: min(90vw, 950px); padding: 0; background: #eee9dc; color: #26231c; border: 0; box-shadow: 0 22px 90px #0008; overflow: auto; max-height: 92vh; }
+    dialog::backdrop { background: #101110df; }
+    dialog img { display: block; width: 100%; max-height: 79vh; object-fit: contain; background: #1b1b19; }
+    .dialog-bar { display: flex; justify-content: space-between; align-items: center; gap: 15px; padding: 7px 12px; }
+    dialog p { margin: 0; font-size: .78rem; }
+    dialog button { color: #eee9dc; background: #242622; border: 0; border-radius: 50%; width: 38px; height: 38px; font-size: 1.2rem; cursor: pointer; }
+    dialog button:focus-visible { outline-color: #73572e; }
+
+    @media (max-width: 720px) {
+      .masthead { height: 48px; }
+      .mast-side { font-size: .52rem; }
+      .hero { padding: 65px 4vw 58px; }
+      .hero h1 { font-size: clamp(2rem, 10.2vw, 4.3rem); }
+      .folders { width: 92%; }
+      .folder .tab { left: 0; }
+      .folder-body { gap: 10px; padding: 10px 12px; }
+      .folder-type { font-size: .66rem; }
+      .folder-name { font-size: clamp(1rem, 4.35vw, 1.55rem); }
+      .folder-note { font-size: .7rem; }
+      .dossier { padding: 33px 4vw 48px; }
+      .binder, .paper-grid { grid-template-columns: 1fr; }
+      .cover { padding: 8px 8px 8px 13px; border-radius: 4px; }
+      .paper::before { left: -9px; width: 5px; height: 5px; }
+      .rail { position: static; display: flex; flex-wrap: wrap; gap: 5px; padding-top: 12px; }
+      .side-tab, .side-tab:hover, .side-tab[aria-current="page"] { border-radius: 5px; padding: 9px; max-width: none; }
+      .next { margin: 0; }
+      .plate { max-width: 440px; margin: auto; }
+      .dossier-top { align-items: start; }
+      .paper { padding: 22px; }
+      .site-footer { font-size: .6rem; }
     }
-
-    .footer-cta p a {
-      color: white;
-      text-decoration: underline;
-      margin-right: 8px;
-    }
-
-    .footer-cta p a:hover {
-      color: var(--mint);
-    }
-
-    .footer-cta .btn {
-      background: white;
-      color: var(--text);
-      flex: 0 0 auto;
-      border: none;
-    }
-
-    .note {
-      color: var(--muted);
-      font-size: 14px;
-      width: min(var(--container), calc(100% - 40px));
-      margin: 0 auto 40px;
-      text-align: center;
-      animation: fadeIn 1.5s ease-out;
-    }
-
-    @media (max-width: 980px) {
-      .nav-inner {
-        height: auto;
-        padding: 18px 20px;
-        border-radius: 28px;
-        align-items: flex-start;
-        gap: 16px;
-      }
-
-      .brand {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .hero,
-      .section-grid {
-        grid-template-columns: 1fr;
-        gap: 36px;
-      }
-
-      .hero {
-        padding-top: 80px;
-      }
-
-      .skills-grid,
-      .project-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-cta {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .container {
-        width: min(100% - 28px, 390px);
-      }
-
-      .navbar {
-        top: 10px;
-        margin-top: 12px;
-      }
-
-      .nav-inner {
-        flex-direction: row;
-        align-items: center;
-        border-radius: 22px;
-      }
-
-      .brand .tag {
-        display: none;
-      }
-
-      .nav-inner > .btn {
-        min-height: 42px;
-        padding: 0 18px;
-      }
-
-      h1 {
-        font-size: 34px;
-        line-height: 1.3;
-      }
-
-      .hero p {
-        font-size: 16px;
-      }
-
-      .profile-card,
-      .about-card,
-      .experience-card,
-      .skill-card,
-      .project-card {
-        border-radius: 20px;
-      }
-
-      .profile-card {
-        padding: 26px;
-      }
-
-      .profile-top {
-        align-items: flex-start;
-      }
-
-      .avatar {
-        width: 84px;
-        height: 84px;
-        font-size: 26px;
-      }
-
-      .metrics {
-        grid-template-columns: 1fr;
-      }
-
-      section {
-        padding: 58px 0;
-      }
-
-      .section-title h2 {
-        font-size: 26px;
-      }
-
-      .footer-cta {
-        width: min(100% - 28px, 390px);
-        padding: 28px;
-        border-radius: 24px;
-      }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
     }
   </style>
 </head>
 
 <body>
-  <header class="navbar">
-    <div class="container nav-inner">
-      <div class="brand">
-        <span>TAMADUR SALEM</span>
-        <span class="tag">Information Security</span>
-      </div>
-
-      <nav class="nav-links" aria-label="Main Navigation">
-        <a href="#about">Professional Summary</a>
-        <a href="#skills">My Skills</a>
-        <a href="#projects">My Projects</a>
-        <a href="#contact">Contact Me</a>
-      </nav>
-
-      <a class="btn secondary" href="https://drive.google.com/file/d/1kJ3kYv5VWjzwRg22uPv5Wqd3B-VLy98D/view?usp=sharing" target="_blank" rel="noopener noreferrer">Download Resume</a>
-    </div>
+  <header class="masthead">
+    <span class="mast-side" id="mast-section" lang="en">PROJECT INDEX</span>
+    <a class="home-link" href="#projects" lang="en">TAMADUR’S FILES</a>
+    <a class="nav-about" href="#about">عنّي <span class="arrow" aria-hidden="true">↗</span></a>
   </header>
 
-  <main>
-    <section class="hero container">
-      <div>
-        <div class="eyebrow">Portfolio & Resume</div>
-        <h1>Information Security Graduate: Blending a Passion for Data Protection with Useful Digital Products.</h1>
-        <p>
-          Welcome to my personal space! I designed this website to serve as a simple portal where I can share my key academic projects, technical skills, and practical experiences—all in one professional hub.
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn" href="#projects">Browse Projects</a>
-          <a class="btn secondary" href="#contact">Contact Me Directly</a>
-        </div>
+  <main id="main">
+    <section id="index-view">
+      <div class="hero">
+        <p class="kicker" lang="en">TAMADUR SALEM · PORTFOLIO</p>
+        <h1 lang="en">PROJECT ARCHIVE</h1>
+        <p dir="rtl">ملفات مختارة من مشاريعي في أمن المعلومات وتطوير الويب.</p>
       </div>
-
-      <aside class="profile-card" aria-label="Profile Summary">
-        <div class="profile-top">
-          <div class="avatar">T</div>
-          <div>
-            <h2 class="verified-name">
-              Tamadur Salem
-              <a class="verified-badge" href="https://www.linkedin.com/in/tmader-salem-587ab0420" target="_blank" rel="noopener noreferrer" aria-label="View verified LinkedIn profile" title="LinkedIn profile">✓</a>
-            </h2>
-            <div class="role">Information Security Graduate • Riyadh, Saudi Arabia</div>
-          </div>
-        </div>
-
-        <span class="tag">Open to IT & Cybersecurity Opportunities</span>
-
-        <div class="metrics">
-          <div class="metric">
-            <strong>10</strong>
-            <span>Featured<br />Projects</span>
-          </div>
-          <div class="metric">
-            <strong>28 Wks</strong>
-            <span>Cooperative<br />Training</span>
-          </div>
-        </div>
-
-        <p class="profile-foot">
-          Core Focus: secure systems, technical documentation, data protection, project coordination, and practical problem-solving.
-        </p>
-      </aside>
+      <nav id="folders" class="folders" aria-label="ملفات المشاريع"></nav>
     </section>
 
-    <section id="about" class="container section-grid">
-      <div class="section-title">
-        <span class="tag">Professional Summary</span>
-        <h2>A quick overview of who I am and my career ambitions.</h2>
-        <p>
-          A professional summary tailored specifically for hiring teams to clearly explain who I am, what value I can bring to your team, and the roles I am targeting.
-        </p>
-      </div>
+    <section id="project-view" class="dossier" hidden></section>
 
-      <div class="card about-card">
-        <p>
-          I am an Information Security graduate with a strong foundation in cybersecurity, information protection, and secure systems. I turn technical requirements into practical solutions through careful analysis, clear documentation, and thoughtful project coordination.
-        </p>
-        <p>
-          Target Roles: Information Security • Cybersecurity • IT Support • Secure Software Development • Technical Documentation.
-        </p>
-      </div>
-    </section>
+    <section id="about-view" class="about-sheet" hidden>
+      <article class="paper" dir="rtl">
+        <h1>تماضر سالم</h1>
+        <p>خريجة أمن معلومات، مقيمة في الرياض. أعمل على مشاريع تجمع بين أمن الأنظمة وتطوير الويب وتحويل المتطلبات التقنية إلى أدوات عملية.</p>
 
-    <section id="skills" class="container">
-      <div class="section-title">
-        <span class="tag">My Skills</span>
-        <h2>Security-minded skills built through real project work.</h2>
-        <p>
-          My strengths combine security thinking, structured analysis, accurate documentation, and dependable project execution.
-        </p>
-      </div>
+        <h2>المهارات</h2>
+        <ul>
+          <li>أمن المعلومات ومراجعة الثغرات ومفاهيم المصادقة.</li>
+          <li>أمن واجهات البرمجة، والتحكم في الوصول، والتحقق من المدخلات.</li>
+          <li>تنظيم البيانات والتحقق منها وإعداد الوثائق والتقارير التقنية.</li>
+          <li>تنسيق المشاريع والعمل الجماعي من التخطيط إلى الاختبار والتسليم.</li>
+        </ul>
 
-      <div class="skills-grid">
-        <article class="card skill-card">
-          <div class="icon" style="background: var(--teal-soft);"></div>
-          <h3>Information Security</h3>
-          <p>I apply digital protection fundamentals, vulnerability discovery, authentication concepts, and security-first thinking when designing and reviewing systems.</p>
-        </article>
+        <h2>الخبرة العملية</h2>
+        <p>تدرّبت تعاونيًا لمدة 28 أسبوعًا في لجنة التنمية الاجتماعية، وساهمت في توثيق الإجراءات، ومراجعة السجلات التشغيلية والأمنية، وإعداد التقارير، والفحص الأولي للثغرات، والتحقق من بيانات المستفيدين.</p>
 
-        <article class="card skill-card">
-          <div class="icon" style="background: var(--blue-soft);"></div>
-          <h3>Secure Systems</h3>
-          <p>I understand secure API practices, access control, database integration, input validation, and the importance of building protection into everyday system workflows.</p>
-        </article>
-
-        <article class="card skill-card">
-          <div class="icon" style="background: var(--purple-soft);"></div>
-          <h3>Data & Documentation</h3>
-          <p>I organize, verify, and structure data accurately while producing clear technical documentation, process records, and periodic reports that teams can rely on.</p>
-        </article>
-
-        <article class="card skill-card">
-          <div class="icon" style="background: var(--mint);"></div>
-          <h3>Project Execution</h3>
-          <p>I bring analytical problem-solving, project coordination, team collaboration, adaptability, and consistent follow-through from planning through testing and delivery.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="projects" class="container">
-      <div class="section-title">
-        <span class="tag">My Projects</span>
-        <h2>Work I take pride in that showcases my capabilities.</h2>
-        <p>
-          Each card below explains the story of one of my projects, its primary core objective, and the tools I utilized to successfully deploy it.
-        </p>
-      </div>
-
-      <div class="project-grid">
-        <a href="https://anaaba00001-pixel.github.io/museu-0/" target="_blank" rel="noopener noreferrer" class="card project-card" aria-label="Athar — visit the museum project (opens in a new tab)">
-          <div class="project-visual" style="background: var(--mint);">Digital Museum</div>
-          <h3>Athar — <span lang="ar" dir="rtl">أثر</span></h3>
-          <p>
-          Athar is an interactive web-based art museum that allows visitors to explore real artworks and discover information about each piece. Built with HTML, CSS, and JavaScript, it combines visual design and interactive navigation to create a digital experience inspired by visiting a museum.
-          </p>
-          <span class="tag">Explore the Museum ↗</span>
-        </a>
-
-        <a href="https://anaaba00001-pixel.github.io/-/" target="_blank" rel="noopener noreferrer" class="card project-card" aria-label="Capsule — explore the historical exhibition (opens in a new tab)">
-          <div class="project-visual" style="background: var(--blue-soft);">Capsule · <span lang="ar" dir="rtl">كبسولة</span></div>
-          <h3>Capsule — <span lang="ar" dir="rtl">كبسولة</span></h3>
-          <p>
-          Capsule is an interactive web-based historical exhibition that takes visitors on a journey through six real historical artifacts, exploring the history and significance of each piece. Built with HTML, CSS, and JavaScript, it combines visual design, interactive animations, and transitions between viewing angles to create an engaging way to explore history.
-          </p>
-          <span class="tag">Explore Capsule ↗</span>
-        </a>
-
-        <a href="https://muqabil.vercel.app/" target="_blank" rel="noopener noreferrer" class="card project-card" aria-label="Muqabil — visit website (opens in a new tab)">
-          <div class="project-visual" style="background: var(--purple-soft);">Muqabil · <span lang="ar" dir="rtl">مقابل</span></div>
-          <h3>Muqabil — <span lang="ar" dir="rtl">مقابل</span></h3>
-          <p>
-            Muqabil is an AI-powered platform designed to help users prepare for job interviews. It offers practice interview questions, feedback on answers, and performance reports to help users organize their thoughts, improve their responses, and approach interviews with greater confidence.
-          </p>
-          <span class="tag">Visit Muqabil ↗</span>
-        </a>
-
-        <a href="https://secure-payment-gateway-integration-beta.vercel.app" target="_blank" rel="noopener noreferrer" class="card project-card">
-          <div class="project-visual" style="background: var(--teal-soft);">Secure Payment</div>
-          <h3>Secure Payment Gateway Integration</h3>
-          <p>
-            Security should not depend on every user remembering every protective step. This graduation project integrates protection directly into the payment flow through authentication, password hashing, encrypted communication, rate limiting, and webhook verification, allowing security to work in the background and fit into existing systems.
-          </p>
-          <span class="tag">Node.js • Express • PostgreSQL • PayPal • JWT</span>
-        </a>
-
-        <a href="https://anaaba00001-pixel.github.io/pp-tifl/" target="_blank" rel="noopener noreferrer" class="card project-card">
-          <div class="project-visual" style="background: var(--blue-soft);">Educational Platform</div>
-          <h3>"Tifl" Educational Platform</h3>
-          <p>
-            During my cooperative training with Social Development, I noticed that the children's library lacked a digital component to extend learning beyond its shelves. I independently turned that gap into Tifl: a large, integrated Arabic platform with 32 interactive games across four sections, secure sign-in, a parent dashboard, child profiles, and play-time tracking.
-          </p>
-          <span class="tag">HTML • CSS • JavaScript • PHP • MySQL</span>
-        </a>
-
-        <a href="https://fixflow-three-khaki.vercel.app" target="_blank" rel="noopener noreferrer" class="card project-card">
-          <div class="project-visual" style="background: var(--mint);"><span lang="ar" dir="rtl">فكس فلو</span></div>
-          <h3>FixFlow</h3>
-          <p>An Arabic maintenance request management system that uses QR codes to submit and track requests.</p>
-          <span class="tag">Open FixFlow ↗</span>
-        </a>
-
-        <a href="https://github.com/anaaba00001-pixel/hail-memory-vercel" target="_blank" rel="noopener noreferrer" class="card project-card">
-          <div class="project-visual" style="background: var(--blue-soft);"><span lang="ar" dir="rtl">ذاكرة حايل</span></div>
-          <h3>Hail Memory — <span lang="ar" dir="rtl">ذاكرة حايل</span></h3>
-          <p>A digital museum presenting the heritage of Hail through interactive 3D artifacts and exhibitions.</p>
-          <span class="tag">View on GitHub ↗</span>
-        </a>
-
-        <a href="https://dependency-guard.vercel.app/" target="_blank" rel="noopener noreferrer" class="card project-card">
-          <div class="project-visual" style="background: var(--teal-soft);">Dependency Scanning</div>
-          <h3>Dependency Guard</h3>
-          <p>An Arabic web app that scans dependency files for known vulnerabilities using OSV-Scanner.</p>
-          <span class="tag">Open Dependency Guard ↗</span>
-        </a>
-
-        <a href="https://github.com/anaaba00001-pixel/soc-alert-triage-analytics-arabic" target="_blank" rel="noopener noreferrer" class="card project-card">
-          <div class="project-visual" style="background: var(--purple-soft);">SOC Alert Triage</div>
-          <h3>Marsad — SOC Alert Triage Dashboard | <span lang="ar" dir="rtl">مرصد</span></h3>
-          <p>An Arabic dashboard that groups SOC alerts into cases, explains their review priority, and records investigation notes.</p>
-          <span class="tag">View on GitHub ↗</span>
-        </a>
-
-        <article class="card project-card">
-          <div class="project-visual" style="background: var(--mint);">Excel Reconciliation</div>
-          <div lang="ar" dir="rtl">
-            <h3>مطابقة الطلبات والدفعات</h3>
-            <p>أداة تقارن بيانات الطلبات ببيانات الدفعات من ملفَي إكسل، وتجمع نتائج المطابقة في تقرير واحد يسهّل مراجعة السجلات وتحديد ما يحتاج إلى متابعة.</p>
-          </div>
-          <div lang="en" dir="ltr">
-            <h3>Order and Payment Reconciliation</h3>
-            <p>A tool that compares order and payment records from two Excel files and consolidates the reconciliation results into one report for review and follow-up.</p>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <section class="container section-grid experience-container">
-      <div class="section-title">
-        <span class="tag">My Experience</span>
-        <h2>Internships and Practical Experience.</h2>
-        <p>
-          A focused section outlining my cooperative training history alongside the technical and operational responsibilities I carried out.
-        </p>
-      </div>
-
-      <article class="card experience-card">
-        <div class="timeline">
-          <div class="dot"></div>
-          <div>
-            <h3>Cooperative Training — Social Development Committee</h3>
-            <p>
-              Supported information security, administrative, and technical workflows by documenting processes, reviewing operational and security logs, preparing periodic reports, conducting initial vulnerability checks, and accurately entering and verifying beneficiary data.
-            </p>
-            <a class="btn" href="mailto:tmadersalem@gmail.com">Email Me</a>
-          </div>
+        <div class="about-links">
+          <a class="external" href="#projects">فهرس المشاريع <span class="arrow" aria-hidden="true">↗</span></a>
+          <a class="external" href="https://drive.google.com/file/d/1kJ3kYv5VWjzwRg22uPv5Wqd3B-VLy98D/view?usp=sharing" target="_blank" rel="noopener noreferrer">السيرة الذاتية <span class="arrow" aria-hidden="true">↗</span></a>
+          <a class="external" href="mailto:tmadersalem@gmail.com">البريد الإلكتروني</a>
+          <a class="external" href="https://www.linkedin.com/in/tmader-salem-587ab0420" target="_blank" rel="noopener noreferrer">LinkedIn <span class="arrow" aria-hidden="true">↗</span></a>
+          <a class="external" href="https://github.com/anaaba00001-pixel" target="_blank" rel="noopener noreferrer">GitHub <span class="arrow" aria-hidden="true">↗</span></a>
         </div>
       </article>
     </section>
   </main>
 
-  <footer id="contact" class="footer-cta">
-    <div>
-      <h2>Ready for the next step? Let's work together.</h2>
-      <p>
-        Riyadh, Saudi Arabia •
-        Email: <a href="mailto:tmadersalem@gmail.com">tmadersalem@gmail.com</a> • 
-        LinkedIn: <a href="https://www.linkedin.com/in/tmader-salem-587ab0420" target="_blank" rel="noopener noreferrer">Tmader Salem</a> • 
-        GitHub: <a href="https://github.com/anaaba00001-pixel" target="_blank" rel="noopener noreferrer">anaaba00001-pixel</a>
-      </p>
-    </div>
-
-    <a class="btn" href="mailto:tmadersalem@gmail.com">Let's Stay in Touch</a>
+  <footer class="site-footer">
+    <span lang="en">TAMADUR SALEM</span>
+    <a href="https://github.com/anaaba00001-pixel" target="_blank" rel="noopener noreferrer">GitHub <span class="arrow" aria-hidden="true">↗</span></a>
   </footer>
 
+  <dialog id="lightbox" aria-labelledby="photo-caption">
+    <img alt="">
+    <div class="dialog-bar" dir="rtl">
+      <p id="photo-caption"></p>
+      <button type="button" aria-label="إغلاق الصورة">×</button>
+    </div>
+  </dialog>
+
+  <script>
+    const projects = [
+      {
+        id: "dependency-guard",
+        name: "Dependency Guard",
+        tab: "Dependency Guard",
+        category: "أمن البرمجيات",
+        color: "#526b62", ink: "#fffaf0", shift: "0%",
+        headline: "فحص ثغرات اعتماديات البرمجيات",
+        summary: "أداة ويب عربية تفحص ملفات اعتماديات المشاريع وتكشف الثغرات المعروفة في الحزم باستخدام OSV-Scanner.",
+        details: ["يرفع المستخدم ملف الاعتماديات ويشغّل الفحص.", "تعرض الواجهة النتائج ومستويات الخطورة، وتتيح تصديرها."],
+        tech: ["OSV-Scanner", "React", "Node.js"],
+        image: "dependency-guard.webp",
+        links: [
+          ["فتح الأداة", "https://dependency-guard.vercel.app/"],
+          ["مستودع GitHub", "https://github.com/anaaba00001-pixel/dependency-guard"]
+        ]
+      },
+      {
+        id: "secure-payment",
+        name: "Secure Payment Gateway Integration",
+        tab: "Secure Payment",
+        category: "مشروع تخرّج",
+        color: "#505f74", ink: "#fffaf0", shift: "10%",
+        headline: "دمج بوابة دفع في بيئة اختبار",
+        summary: "نموذج تعليمي يربط تطبيق ويب بـ PayPal Sandbox ويعرض حالة المعاملة بعد الدفع التجريبي.",
+        details: [
+          "يغطي إنشاء طلب الدفع وتأكيده واستقبال إشعارات المعاملات.",
+          "يشمل ضوابط للمصادقة والحد من الطلبات والتحقق من الإشعارات، ونمذجة للتهديدات باستخدام STRIDE."
+        ],
+        tech: ["PayPal Sandbox", "Node.js", "Express", "PostgreSQL", "JWT", "STRIDE"],
+        image: "secure-payment.webp",
+        links: [["فتح المشروع", "https://secure-payment-gateway-integration-beta.vercel.app"]]
+      },
+      {
+        id: "tifl",
+        name: "Tifl",
+        tab: "Tifl",
+        category: "منصة تعليمية",
+        color: "#bdab78", ink: "#242419", shift: "3%",
+        headline: "طفل — التعلّم باللعب باللغة العربية",
+        summary: "منصة تعليمية عربية للأطفال تضم 32 لعبة تفاعلية ضمن أربعة أقسام، إلى جانب الدروس والأنشطة والقصص.",
+        details: [
+          "تغطي الأنشطة الرياضيات واللغة العربية والفنون والسلامة الرقمية.",
+          "تتيح لوحة ولي الأمر إدارة ملفات الأطفال ومتابعة وقت اللعب."
+        ],
+        tech: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
+        image: "tifl.webp",
+        links: [["فتح المنصة", "https://anaaba00001-pixel.github.io/pp-tifl/"]]
+      },
+      {
+        id: "fixflow",
+        name: "FixFlow",
+        tab: "FixFlow",
+        category: "أتمتة الصيانة",
+        color: "#835b4f", ink: "#fffaf0", shift: "14%",
+        headline: "فكس فلو — إدارة طلبات الصيانة عبر رموز QR",
+        summary: "نظام عربي يسهّل تقديم طلبات الصيانة عن طريق مسح رمز QR ومتابعتها من لوحة تشغيل واحدة.",
+        details: ["تتيح اللوحة إنشاء الطلبات والبحث فيها وتصفيتها وتعيينها ومتابعة حالتها."],
+        tech: ["React", "Vite", "Supabase"],
+        image: "fixflow.webp",
+        links: [["فتح النظام", "https://fixflow-three-khaki.vercel.app"]]
+      },
+      {
+        id: "athar",
+        name: "Athar",
+        tab: "Athar",
+        category: "متحف رقمي",
+        color: "#526b62", ink: "#fffaf0", shift: "5%",
+        headline: "أثر — متحف اللوحات والتحف",
+        summary: "متحف فني على الويب يتيح للزائر استكشاف أعمال فنية حقيقية والاطلاع على معلومات كل عمل عبر واجهة تفاعلية.",
+        details: [],
+        tech: ["HTML", "CSS", "JavaScript"],
+        image: "athar.webp",
+        links: [["استكشاف المتحف", "https://anaaba00001-pixel.github.io/museu-0/"]]
+      },
+      {
+        id: "capsule",
+        name: "Capsule",
+        tab: "Capsule",
+        category: "معرض تاريخي",
+        color: "#505f74", ink: "#fffaf0", shift: "11%",
+        headline: "كبسولة — معرض تاريخي تفاعلي",
+        summary: "معرض يعرض ست قطع أثرية حقيقية ويعرّف الزائر بتاريخها وأهميتها، مع انتقالات تفاعلية بين زوايا العرض.",
+        details: [],
+        tech: ["HTML", "CSS", "JavaScript"],
+        image: "capsule.webp",
+        links: [["فتح المعرض", "https://anaaba00001-pixel.github.io/-/"]]
+      },
+      {
+        id: "muqabil",
+        name: "Muqabil",
+        tab: "Muqabil",
+        category: "تدريب على المقابلات",
+        color: "#bdab78", ink: "#242419", shift: "2%",
+        headline: "مقابل — الاستعداد للمقابلات الوظيفية",
+        summary: "منصة تستخدم الذكاء الاصطناعي لمساعدة المستخدم على التدرّب على أسئلة المقابلات والحصول على ملاحظات على إجاباته وتقارير عن أدائه.",
+        details: [],
+        tech: [],
+        image: "muqabil.webp",
+        links: [["فتح المنصة", "https://muqabil.vercel.app/"]]
+      },
+      {
+        id: "hail-memory",
+        name: "Hail Memory",
+        tab: "Hail Memory",
+        category: "تراث رقمي",
+        color: "#835b4f", ink: "#fffaf0", shift: "12%",
+        headline: "ذاكرة حايل",
+        summary: "متحف رقمي يعرض جوانب من تراث حائل من خلال مجسمات ثلاثية الأبعاد ومعارض تفاعلية.",
+        details: [],
+        tech: ["JavaScript", "Node.js", "Supabase"],
+        image: "hail-memory.webp",
+        links: [["مستودع GitHub", "https://github.com/anaaba00001-pixel/hail-memory-vercel"]]
+      },
+      {
+        id: "marsad",
+        name: "Marsad — SOC Alert Triage Dashboard",
+        tab: "Marsad",
+        category: "تحليل التنبيهات الأمنية",
+        color: "#526b62", ink: "#fffaf0", shift: "6%",
+        headline: "مرصد — فرز تنبيهات مركز العمليات الأمنية",
+        summary: "لوحة عربية تجمع التنبيهات المرتبطة في حالات، وتوضح أولوية مراجعتها، وتتيح حفظ حالة التحقيق والملاحظات.",
+        details: ["تدعم رفع ملفات CSV والتحقق منها، ومراجعة أداء قواعد الكشف، وتصدير النتائج."],
+        tech: ["Python", "Streamlit", "SQLite"],
+        image: "marsad.webp",
+        links: [["مستودع GitHub", "https://github.com/anaaba00001-pixel/soc-alert-triage-analytics-arabic"]]
+      },
+      {
+        id: "order-payment-reconciliation",
+        name: "Order and Payment Reconciliation",
+        tab: "Reconciliation",
+        category: "مطابقة بيانات",
+        color: "#bdab78", ink: "#242419", shift: "10%",
+        headline: "مطابقة الطلبات والدفعات",
+        summary: "أداة تقارن بيانات الطلبات ببيانات الدفعات من ملفَي إكسل، وتجمع نتائج المطابقة في تقرير واحد يسهّل مراجعة السجلات وتحديد ما يحتاج إلى متابعة.",
+        english: {
+          title: "Order and Payment Reconciliation",
+          summary: "A tool that compares order and payment records from two Excel files and consolidates the reconciliation results into one report for review and follow-up."
+        },
+        details: [],
+        tech: ["Excel"],
+        image: "order-payment-reconciliation.webp",
+        links: []
+      }
+    ];
+
+    const folders = document.querySelector("#folders");
+    const index = document.querySelector("#index-view");
+    const dossier = document.querySelector("#project-view");
+    const about = document.querySelector("#about-view");
+    const sectionLabel = document.querySelector("#mast-section");
+    const dialog = document.querySelector("#lightbox");
+    const dialogImage = dialog.querySelector("img");
+    const dialogCaption = dialog.querySelector("p");
+
+    const archiveTitle = "TAMADUR’S FILES — معرض مشاريع تماضر سالم";
+    const style = ({ color, ink, shift }) => `--tone:${color};--on:${ink};--shift:${shift}`;
+    const folderHref = id => `#project/${id}`;
+
+    folders.innerHTML = projects.map((project, position) => `
+      <a class="folder" href="${folderHref(project.id)}" style="${style(project)}">
+        <span class="tab" lang="en">${project.tab}</span>
+        <span class="folder-body">
+          <span class="folder-name" lang="en">${project.name}</span>
+          <span class="folder-type" dir="rtl">${project.category}</span>
+          <span class="arrow" aria-hidden="true">↗</span>
+          ${position === projects.length - 1 ? `<span class="folder-note" dir="rtl">${project.headline}</span>` : ""}
+        </span>
+      </a>
+    `).join("");
+
+    function renderProject(project) {
+      const next = projects[(projects.indexOf(project) + 1) % projects.length];
+      dossier.style.cssText = style(project);
+
+      dossier.innerHTML = `
+        <div class="dossier-top">
+          <h1 lang="en">${project.name}</h1>
+          <a class="return" href="#projects">← الفهرس</a>
+        </div>
+
+        <div class="binder">
+          <div class="cover">
+            <article class="paper">
+              <div class="paper-grid no-image">
+                <div class="photo-area" hidden>
+                  <button type="button" class="plate" aria-label="تكبير صورة المشروع">
+                    <img alt="">
+                    <span aria-hidden="true">↗</span>
+                  </button>
+                </div>
+
+                <div>
+                  <div lang="ar" dir="rtl">
+                    <h2>${project.headline}</h2>
+                    <p>${project.summary}</p>
+                    ${project.details.length ? `
+                      <h3>ما يتضمنه المشروع</h3>
+                      <ul>${project.details.map(detail => `<li>${detail}</li>`).join("")}</ul>
+                    ` : ""}
+                  </div>
+
+                  ${project.english ? `
+                    <div class="english-summary" lang="en" dir="ltr">
+                      <h2>${project.english.title}</h2>
+                      <p>${project.english.summary}</p>
+                    </div>
+                  ` : ""}
+
+                  ${project.tech.length ? `
+                    <div class="tech-list" lang="en">
+                      ${project.tech.map(technology => `<span>${technology}</span>`).join("")}
+                    </div>
+                  ` : ""}
+                </div>
+              </div>
+
+              ${project.links.length ? `
+                <div class="paper-bottom" dir="rtl">
+                  ${project.links.map(([label, href]) => `
+                    <a class="external" href="${href}" target="_blank" rel="noopener noreferrer">
+                      ${label} <span class="arrow" aria-hidden="true">↗</span>
+                    </a>
+                  `).join("")}
+                </div>
+              ` : ""}
+            </article>
+          </div>
+
+          <nav class="rail" aria-label="التنقل بين المشاريع">
+            ${projects.map(item => `
+              <a class="side-tab" href="${folderHref(item.id)}" style="${style(item)}" lang="en"${item === project ? ' aria-current="page"' : ""}>
+                ${item.tab}
+              </a>
+            `).join("")}
+            <a class="next" href="${folderHref(next.id)}">التالي <span class="arrow" aria-hidden="true">↗</span></a>
+          </nav>
+        </div>
+      `;
+
+      const paperGrid = dossier.querySelector(".paper-grid");
+      const photoArea = dossier.querySelector(".photo-area");
+      const plate = photoArea.querySelector(".plate");
+      const photo = plate.querySelector("img");
+      const photoLabel = `صورة مشروع ${project.headline}`;
+
+      photo.alt = photoLabel;
+      photo.addEventListener("load", () => {
+        photoArea.hidden = false;
+        paperGrid.classList.remove("no-image");
+      }, { once: true });
+      photo.src = `assets/${encodeURIComponent(project.image)}`;
+
+      plate.addEventListener("click", () => {
+        dialogImage.src = photo.src;
+        dialogImage.alt = photoLabel;
+        dialogCaption.textContent = photoLabel;
+        dialog.showModal();
+      });
+    }
+
+    function renderRoute(shouldFocus = false) {
+      const hash = location.hash;
+      const project = projects.find(item => hash === folderHref(item.id));
+      const isAbout = hash === "#about";
+
+      if (dialog.open) dialog.close();
+
+      index.hidden = Boolean(project || isAbout);
+      dossier.hidden = !project;
+      about.hidden = !isAbout;
+
+      if (project) renderProject(project);
+
+      sectionLabel.textContent = project ? "PROJECT FILE" : isAbout ? "PROFILE" : "PROJECT INDEX";
+      document.title = project ? `${project.name} — TAMADUR’S FILES` : archiveTitle;
+      window.scrollTo({ top: 0, behavior: "instant" });
+
+      if (shouldFocus) {
+        const view = project ? dossier : isAbout ? about : index;
+        const heading = view.querySelector("h1");
+        heading.tabIndex = -1;
+        heading.focus({ preventScroll: true });
+      }
+    }
+
+    dialog.querySelector("button").addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", event => {
+      if (event.target === dialog) dialog.close();
+    });
+    window.addEventListener("hashchange", () => renderRoute(true));
+    renderRoute();
+  </script>
 </body>
 </html>
