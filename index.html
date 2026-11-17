@@ -35,7 +35,7 @@
       pointer-events: none;
       z-index: 5;
       opacity: .12;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='.26' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='.26' filter='url(%23n)'/%3E%3C/svg%3E");
     }
     button, a { -webkit-tap-highlight-color: transparent; }
     a { color: inherit; }
@@ -269,6 +269,7 @@
       .paper { padding: 22px; }
       .site-footer { font-size: .6rem; }
     }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
     }
@@ -490,6 +491,10 @@
     const dialogImage = dialog.querySelector("img");
     const dialogCaption = dialog.querySelector("p");
 
+    const photoSound = new Audio("./assets/resident-evil-4-herb-pick-up-sound-effect.mp3");
+    photoSound.preload = "auto";
+    photoSound.loop = false;
+
     const archiveTitle = "TAMADUR’S FILES — معرض مشاريع تماضر سالم";
     const style = ({ color, ink, shift }) => `--tone:${color};--on:${ink};--shift:${shift}`;
     const folderHref = id => `#project/${id}`;
@@ -593,6 +598,11 @@
         dialogImage.alt = photoLabel;
         dialogCaption.textContent = photoLabel;
         dialog.showModal();
+
+        photoSound.currentTime = 0;
+        photoSound.play().catch(error => {
+          console.warn("Could not play the photo sound.", error);
+        });
       });
     }
 
